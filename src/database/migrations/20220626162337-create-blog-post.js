@@ -26,12 +26,12 @@ module.exports = {
       },
       published: {
         allowNull: false,
-        defaultValue: sequelize.literal('NOW()'),
+        defaultValue: Sequelize.literal('NOW()'),
         type: Sequelize.DATE,
       },
       updated: {
         allowNull: false,
-        defaultValue: sequelize.literal('NOW()'),
+        defaultValue: Sequelize.literal('NOW()'),
         type: Sequelize.DATE,
       }
     });
