@@ -1,6 +1,6 @@
 'use strict';
 const postCategoryModel = (sequelize, DataTypes) => {
-  const postCategoryTable = sequelize.define('postCategory', {
+  const postCategoryTable = sequelize.define('PostCategory', {
       postId: {
         foreignKey: true,
         type: DataTypes.INTEGER,
@@ -14,18 +14,18 @@ const postCategoryModel = (sequelize, DataTypes) => {
   );
 
   postCategoryTable.associate = (models) => {
-    models.BlogPost.belongsToMany(models.category, {
+    models.BlogPost.belongsToMany(models.Category, {
       as: 'categories',
       foreignKey: 'postId',
       otherKey: 'categoryId',
-      through: postCategory,
+      through: PostCategory,
     });
 
-    models.Category.belongsToMany(models.blogPost, {
+    models.Category.belongsToMany(models.BlogPost, {
       as: 'blogPosts',
       foreignKey: 'categoryId',
       otherKey: 'postId',
-      through: postCategory,
+      through: PostCategory,
     });
   };
 

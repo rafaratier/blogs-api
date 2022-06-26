@@ -1,5 +1,5 @@
 const blogPostModel = (sequelize, DataTypes) => {
-  const blogPostTable = sequelize.define('blogPost', {
+  const blogPostTable = sequelize.define('BlogPost', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -29,7 +29,7 @@ const blogPostModel = (sequelize, DataTypes) => {
   });
 
   blogPostTable.associate = (models) => {
-    blogPostTable.belongsTo(models.user, {foreignKey: 'userId', as: 'user'});
+    blogPostTable.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
   };
 
   return blogPostTable;

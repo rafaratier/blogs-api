@@ -1,6 +1,6 @@
 'use strict';
 const userModel = (sequelize, DataTypes) => {
-  const userTable = sequelize.define('user', {
+  const userTable = sequelize.define('User', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -26,7 +26,7 @@ const userModel = (sequelize, DataTypes) => {
   });
 
   userTable.associate = (models) => {
-    userTable.hasMany(models.blogPost, {foreignKey: 'userId', as: 'blogposts'});
+    userTable.hasMany(models.BlogPost, {foreignKey: 'userId', as: 'blogposts'});
   };
 
 return userTable;
