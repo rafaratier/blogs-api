@@ -10,7 +10,7 @@ const categoryModel = (sequelize, DataTypes) => {
     name: {
       allowNull: false,
       type: DataTypes.STRING,
-  } 
+  }
 });
 return categoryTable
 };
