@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('postCategories', {
+    await queryInterface.createTable('PostCategories', {
       categoryId: {
         allowNull: false,
         onDelete: 'CASCADE',
         primaryKey: true,
         references: {
-          model: 'categories',
-          key: 'id'
+          key: 'id',
+          model: 'Categories',
         },
         type: Sequelize.INTEGER,
       },
@@ -17,8 +17,8 @@ module.exports = {
         onDelete: 'CASCADE',
         primaryKey: true,
         references: {
-          model: 'blogPosts',
-          key: 'id'
+          key: 'id',
+          model: 'BlogPosts',
         },
         type: Sequelize.INTEGER,
       }
@@ -28,6 +28,6 @@ module.exports = {
     })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('postCategories');
+    await queryInterface.dropTable('PostCategories');
   }
 };
