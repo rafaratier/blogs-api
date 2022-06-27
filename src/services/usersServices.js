@@ -30,8 +30,16 @@ const signInUser = async ({ email, password }) => {
   return dataValues;
 };
 
+const getAllUsers = async () => {
+  const allUsers = await User.findAll({
+    attributes: ['id', 'displayName', 'email', 'image'],
+  });
+  return allUsers;
+};
+
 module.exports = {
   checkForMembership,
   createUser,
   signInUser,
+  getAllUsers,
 };
