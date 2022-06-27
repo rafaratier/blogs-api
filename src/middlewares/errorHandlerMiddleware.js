@@ -1,4 +1,4 @@
-const ErrorHandler = require('../utils/errorHandler');
+const ErrorHandler = require('../utils/ErrorHandler');
 
 function errorHandlerMiddleware(err, _req, res, _next) {
   if (err instanceof ErrorHandler) {
