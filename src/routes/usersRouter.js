@@ -1,5 +1,5 @@
 const express = require('express');
-const { createUser, getAllUsers } = require('../controllers/usersController');
+const { createUser, getAllUsers, getUserById } = require('../controllers/usersController');
 const createUserValidation = require('../middlewares/createUserValidation');
 const authValidation = require('../middlewares/authValidationMIddleware');
 
@@ -9,5 +9,6 @@ usersRouter.post('/', createUserValidation, createUser);
 
 usersRouter.use(authValidation);
 usersRouter.get('/', getAllUsers);
+usersRouter.get('/:id', getUserById);
 
 module.exports = usersRouter;
