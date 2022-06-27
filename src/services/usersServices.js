@@ -21,7 +21,17 @@ const createUser = async (userData) => {
   return generateToken(newUser);
 };
 
+const signInUser = async ({ email, password }) => {
+  const dataValues = await User.findOne({
+    attributes: ['id', 'displayName', 'email', 'image'],
+    where: { email, password },
+  });
+
+  return dataValues;
+};
+
 module.exports = {
   checkForMembership,
   createUser,
+  signInUser,
 };
