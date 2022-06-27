@@ -19,7 +19,20 @@ const getAllUsers = async (req, res) => {
   res.status(200).json(allUsers);
 };
 
+const getUserById = async (req, res, next) => {
+  const { id } = req.params;
+  const user = await usersServices.getUserById(id);
+
+  if (!user) {
+    next(ErrorHandler.notFound({ message: 'User does not exist' }));
+    return;
+  }
+
+  res.status(200).json(user);
+};
+
 module.exports = {
   createUser,
   getAllUsers,
+  getUserById,
 };
