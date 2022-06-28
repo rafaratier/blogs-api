@@ -12,9 +12,9 @@ const createCategory = async (categoryName) => {
 };
 
 const getAllCategories = async () => {
-  const allCategories = await Category.findAll();
+  const getCategories = await Category.findAll();
 
-  return allCategories;
+  return getCategories;
 };
 
 module.exports = {
