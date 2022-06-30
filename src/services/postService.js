@@ -46,7 +46,7 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (postId) => {
-  const post = await BlogPost.finOne({
+  const post = await BlogPost.findOne({
     include: [
       {
       attributes: { exclude: ['password'] },
@@ -59,7 +59,7 @@ const getPostById = async (postId) => {
       model: Category,
     },
     ],
-    where: { postId },
+    where: { id: postId },
   });
 
   return post;

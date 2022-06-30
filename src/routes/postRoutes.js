@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  createPost, getAllPosts,
+  createPost, getAllPosts, getPostById,
 } = require('../controllers/postController');
 const authValidation = require('../middlewares/authValidationMiddleware');
 const getAuthenticatedUser = require('../middlewares/getAuthenticatedUser');
@@ -12,5 +12,6 @@ postRouter.use(getAuthenticatedUser);
 
 postRouter.post('/', createPost);
 postRouter.get('/', getAllPosts);
+postRouter.get('/:id', getPostById);
 
 module.exports = postRouter;
