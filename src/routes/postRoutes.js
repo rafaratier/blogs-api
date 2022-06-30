@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  createPost,
+  createPost, getAllPosts,
 } = require('../controllers/postController');
 const authValidation = require('../middlewares/authValidationMiddleware');
 const getAuthenticatedUser = require('../middlewares/getAuthenticatedUser');
@@ -11,5 +11,6 @@ postRouter.use(authValidation);
 postRouter.use(getAuthenticatedUser);
 
 postRouter.post('/', createPost);
+postRouter.get('/', getAllPosts);
 
 module.exports = postRouter;
