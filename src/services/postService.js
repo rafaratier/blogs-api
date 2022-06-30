@@ -45,7 +45,28 @@ const getAllPosts = async () => {
   return allPosts;
 };
 
+const getPostById = async (postId) => {
+  const post = await BlogPost.finOne({
+    include: [
+      {
+      attributes: { exclude: ['password'] },
+      as: 'user',
+      model: User,
+    },
+    {
+      attributes: { exclude: ['PostCategory'] },
+      as: 'categories',
+      model: Category,
+    },
+    ],
+    where: { postId },
+  });
+
+  return post;
+};
+
 module.exports = {
   createPost,
   getAllPosts,
+  getPostById,
 };
