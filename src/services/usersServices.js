@@ -4,9 +4,9 @@ const generateToken = require('../utils/generateToken');
 const checkForMembership = async ({ email }) => {
   const isMember = await User.findOne({ where: { email } });
 
-  if (isMember) { return true; }
+  if (!isMember) { return null; }
 
-  return null;
+  return isMember;
 };
 
 const createUser = async (userData) => {

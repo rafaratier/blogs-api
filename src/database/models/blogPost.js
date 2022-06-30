@@ -19,12 +19,10 @@ const blogPostModel = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     published: {
-      allowNull: false,
       type: DataTypes.DATE,
     },
     updated: {
-      allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
     }
   });
 

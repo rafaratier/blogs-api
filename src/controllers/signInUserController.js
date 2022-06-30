@@ -10,8 +10,8 @@ const signInUser = async (req, res, next) => {
     return;
   }
 
-  const { email, password } = req.body;
-  const token = await generateToken({ email, password });
+  const { id, email } = isSignedIn;
+  const token = await generateToken({ id, email });
 
   return res.status(200).json({ token });
 };
