@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const {
   BlogPost,
   PostCategory,
@@ -88,7 +89,6 @@ const deletePostById = async (userId, postId) => {
 };
 
 const searchInPosts = async (query) => {
-  const { Op } = sequelize;
   const foundPosts = await BlogPost.findAll({
     where: {
       [Op.or]: [
@@ -102,7 +102,7 @@ const searchInPosts = async (query) => {
     },
     include: [
       { model: User, as: 'user', attributes: { exclude: ['password'] } },
-      { model: Category, as: 'categories', through: { attributes: ['PostCategory'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  createPost, getAllPosts, getPostById, updatePost, deletePost,
+  createPost, getAllPosts, getPostById, updatePost, deletePost, searchInPosts,
 } = require('../controllers/postController');
 const authValidation = require('../middlewares/authValidationMiddleware');
 const getAuthenticatedUser = require('../middlewares/getAuthenticatedUser');
@@ -12,6 +12,7 @@ postRouter.use(getAuthenticatedUser);
 
 postRouter.post('/', createPost);
 postRouter.get('/', getAllPosts);
+postRouter.get('/search', searchInPosts);
 postRouter.get('/:id', getPostById);
 postRouter.put('/:id', updatePost);
 postRouter.delete('/:id', deletePost);
