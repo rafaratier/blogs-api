@@ -87,10 +87,33 @@ const deletePostById = async (userId, postId) => {
   return deletedPost;
 };
 
+const searchInPosts = async (query) => {
+  const { Op } = sequelize;
+  const foundPosts = await BlogPost.findAll({
+    where: {
+      [Op.or]: [
+        {
+          title: { [Op.substring]: query },
+        },
+        {
+          content: { [Op.substring]: query },
+        },
+      ],
+    },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: ['PostCategory'] } },
+    ],
+  });
+
+  return foundPosts;
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
   updatePost,
   deletePostById,
+  searchInPosts,
 };
